@@ -11,3 +11,14 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.login,
+.image {
+    min-height: 100vh
+}
+
+.bg-image {
+    background-image: url('https://www.consalud.es/estetic/uploads/s1/17/03/13/5/alimentacion-saludable-foto-freepik.jpeg');
+    background-size: cover;
+    background-position: center center
+}
