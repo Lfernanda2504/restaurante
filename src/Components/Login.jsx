@@ -1,6 +1,40 @@
-import React from "react";
+import React,{ useState} from "react";
+import { useForm } from '../Hooks/useForm'
+import {loginToken}  from '../service'
+import Swal from 'sweetalert2'
 
 const Login = () => {
+  const [user, setUser] = useState(null);
+  const [formValues, handleInputChange, reset]=useForm({
+    email: "",
+    password: "",
+  })
+
+  const {email, password} = formValues;
+
+  const handleLogin = async (e)=>{
+    e.preventDefault()
+    try{
+      const user = await loginToken({
+        email,
+        password
+      })
+      console.log(user)
+      setUser(user)
+      reset();
+
+
+    }catch(e){
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Something went wrong!',
+      })
+      
+    }
+    
+  }
+  
   return (
     <div>
       <div className="container-fluid">
@@ -12,24 +46,27 @@ const Login = () => {
                 <div className="row">
                   <div className="col-lg-7 col-xl-6 mx-auto">
                     <h2 className="display-4">Log In</h2>
-                    <form>
+                    <form onSubmit={handleLogin}>
                       <div className="form-group mb-3">
                         <input
-                          id="inputEmail"
+                          name="email"
                           type="email"
                           placeholder="Email address"
-                          required=""
-                          autofocus=""
+                          value={email}
+                          onChange={handleInputChange}
                           className="form-control border-0 shadow-sm px-4"
+                          required
                         />
                       </div>
                       <div className="form-group mb-3">
                         <input
-                          id="inputPassword"
+                          name="password"
                           type="password"
                           placeholder="Password"
-                          required=""
+                          value={password}
+                          onChange={handleInputChange}
                           className="form-control  border-0 shadow-sm px-4 text-danger"
+                          required
                         />
                       </div>
                       <button
