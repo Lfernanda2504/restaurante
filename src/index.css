@@ -17,8 +17,17 @@ code {
     min-height: 100vh
 }
 
+.login{
+  background-color: #b894e5;
+  opacity: 0.8;
+  background-image:  radial-gradient(#dc3545 2px, transparent 2px), radial-gradient(#fee5e8 2px, #b894e5 2px);
+  background-size: 80px 80px;
+  background-position: 0 0,40px 40px;
+  color: #dc3545;
+}
+
 .bg-image {
     background-image: url('https://www.consalud.es/estetic/uploads/s1/17/03/13/5/alimentacion-saludable-foto-freepik.jpeg');
     background-size: cover;
-    background-position: center center
+    background-position: center center;
 }
